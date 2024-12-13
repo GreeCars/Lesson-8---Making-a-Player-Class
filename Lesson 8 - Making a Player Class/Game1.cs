@@ -9,6 +9,11 @@ namespace Lesson_8___Making_a_Player_Class
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        KeyboardState keyboardState;
+
+        Texture2D amoebaTexture;
+        Texture2D wallTexture;
+        Texture2D foodTexture;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,11 +32,17 @@ namespace Lesson_8___Making_a_Player_Class
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            amoebaTexture = Content.Load<Texture2D>("amoeba");
+            wallTexture = Content.Load<Texture2D>("rectangle");
+            foodTexture = Content.Load<Texture2D>("circle");
+
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
+            keyboardState = Keyboard.GetState();
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
